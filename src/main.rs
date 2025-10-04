@@ -1,3 +1,5 @@
+mod file_loader;
+
 use clap::Parser;
 
 #[derive(Parser)]
@@ -18,6 +20,9 @@ struct Cli {
 fn main() {
     let cli = Cli::parse();
 
-    println!("File A: {:?}", cli.file_a);
-    println!("File B: {:?}", cli.file_b);
+    let file_a_contents = file_loader::read_file(&cli.file_a).unwrap();
+    let file_b_contents = file_loader::read_file(&cli.file_b).unwrap();
+
+    println!("File A: {:?}\n\n\n", file_a_contents);
+    println!("File B: {:?}\n\n\n", file_b_contents);
 }

@@ -1,6 +1,9 @@
 mod file_loader;
+mod differ;
 
 use clap::Parser;
+
+use crate::differ::get_diff;
 
 #[derive(Parser)]
 #[command(name = "Riff")]
@@ -25,4 +28,7 @@ fn main() {
 
     println!("File A: {:?}\n\n\n", file_a_contents);
     println!("File B: {:?}\n\n\n", file_b_contents);
+
+get_diff(&file_a_contents, &file_b_contents);
+    println!()
 }

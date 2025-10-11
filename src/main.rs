@@ -1,9 +1,11 @@
 mod file_loader;
 mod differ;
+mod tui;
 
 use clap::Parser;
 
-use crate::differ::get_diff;
+use differ::get_diff;
+use tui::render_diff;
 
 #[derive(Parser)]
 #[command(name = "Riff")]
@@ -29,6 +31,8 @@ fn main() {
     println!("File A: {:?}\n\n\n", file_a_contents);
     println!("File B: {:?}\n\n\n", file_b_contents);
 
-get_diff(&file_a_contents, &file_b_contents);
-    println!()
+    let diff = get_diff(&file_a_contents, &file_b_contents);
+    println!("Diff: {:?}", diff);
+
+    render_diff(diff);
 }

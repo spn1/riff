@@ -1,5 +1,5 @@
-mod file_loader;
 mod differ;
+mod file_loader;
 mod tui;
 
 use clap::Parser;
@@ -14,9 +14,11 @@ use tui::render_diff;
 struct Cli {
     file_a: String,
     file_b: String,
-    #[arg(long, short='s')]
+
+    #[arg(long, short = 's')]
     separator: Option<char>,
-    #[arg(long, short='c')]
+
+    #[arg(long, short = 'c')]
     comment: Option<char>,
 }
 
